@@ -1,0 +1,27 @@
+
+EssbaseDataOutputDialog.EssbaseDataOutput=Output a celdas de Essbase
+
+EssbaseDataOutputDialog.GetFields = Obtener Dimensiones
+EssbaseDataOutputDialog.ClearFields = Limpiar Dimensiones
+EssbaseDataOutputDialog.SelectApplication = Application
+EssbaseDataOutputDialog.SelectCube = Cubo
+EssbaseDataOutputDialog.StepName = Nombre del Paso
+EssbaseDataOutputDialog.SelectMeasureType = Default Measure Type
+EssbaseDataOutputDialog.ClearCube = Clear Cube before load ?
+
+EssbaseDataOutputDialog.ColumnDimension = Dimensión
+EssbaseDataOutputDialog.ColumnField = Campo
+EssbaseDataOutputDialog.ColumnType = Tipo
+
+EssbaseDataOutputDialog.RetreiveAppsErrorTitle = Error al obtener application
+EssbaseDataOutputDialog.RetreiveAppsError = Error al obtener applications
+EssbaseDataOutputDialog.SelectAppFirstError = Por favor seleccione un application
+EssbaseDataOutputDialog.RetreiveCubesErrorTitle = Obteniendo cubos
+EssbaseDataOutputDialog.RetreiveCubesError = Fallo obteniendo cubos
+EssbaseDataOutputDialog.SelectCubeFirstError = Por favor, selecciona un cubo primero
+EssbaseDataOutputDialog.FailedToSaveDataErrorTitle = Guardando datos
+EssbaseDataOutputDialog.FailedToSaveDataError = Error obteniendo datos para guardar los cambios
+
+EssbaseDataOutput.ToolTip = Escribe datos a un cubo definido en Essbase 
+EssbaseDataOutput.Description = Output a celdas de Essbase  
+EssbaseDataOutput.Category = Essbase
