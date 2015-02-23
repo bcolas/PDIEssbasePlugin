@@ -140,7 +140,7 @@ public class EssbaseOlapInputDialog extends BaseStepDialog implements StepDialog
 		//
 		wlStepname = new Label(shell, SWT.RIGHT);
 		wlStepname.setText(BaseMessages.getString(PKG,
-				"OlapInputDialog.StepName")); //$NON-NLS-1$
+				"EssbaseOlapInputDialog.StepName")); //$NON-NLS-1$
 		props.setLook(wlStepname);
 		fdlStepname = new FormData();
 		fdlStepname.left = new FormAttachment(0, 0);
@@ -462,7 +462,7 @@ public class EssbaseOlapInputDialog extends BaseStepDialog implements StepDialog
 			colnr++;
 		}
 		wlPosition.setText(BaseMessages.getString(PKG,
-				"EssbaseOlapInput.Position.Label", "" + linenr, "" + colnr));
+				"EssbaseDataInputDialog.Position.Label", "" + linenr, "" + colnr));
 
 	}
 
