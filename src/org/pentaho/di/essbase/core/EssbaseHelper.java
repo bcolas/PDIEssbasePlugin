@@ -487,17 +487,11 @@ public class EssbaseHelper implements DatabaseFactoryInterface {
 	 * @throws EssException In case something goes wrong
 	 */
 		
-	public void loadData(IEssCube cube, Object[] row) throws EssException {
+	public void loadData(IEssCube cube, StringBuffer rows) throws EssException {
 		if (cube.getCubeType().equals(IEssCube.EEssCubeType.ASO_INT_VALUE))
 			return;
-		else {
-			StringBuffer data = new StringBuffer();
-			for (int i = 0; i < row.length; i++) {
-			   data.append( row[i] );
-			   if (i<row.length-1) data.append( " " );
-			}
-			cube.loadData(data.toString(), IEssOlapFileObject.TYPE_ALL, null, false, true, true);
-		}
+		else			
+			cube.loadData(rows.toString(), IEssOlapFileObject.TYPE_ALL, null, false, true, true);
 	}
 	
 	/**
