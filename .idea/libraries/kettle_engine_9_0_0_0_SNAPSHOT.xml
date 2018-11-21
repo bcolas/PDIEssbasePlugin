@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="kettle-engine-9.0.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/kettle-engine-9.0.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
