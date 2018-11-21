@@ -2,7 +2,7 @@
  *
  * Pentaho Data Integration
  *
- * Copyright (C) 2002-2012 by Pentaho : http://www.pentaho.com
+ * Copyright (C) 2002-2018 by Pentaho : http://www.pentaho.com
  *
  *******************************************************************************
  *
@@ -22,9 +22,6 @@
 
 package org.pentaho.di.trans.steps.essbase.datainput;
 
-import java.util.List;
-import java.util.Map;
-
 import org.pentaho.di.core.CheckResult;
 import org.pentaho.di.core.CheckResultInterface;
 import org.pentaho.di.core.Const;
@@ -40,7 +37,6 @@ import org.pentaho.di.core.row.ValueMeta;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.variables.VariableSpace;
 import org.pentaho.di.core.xml.XMLHandler;
-import org.pentaho.di.essbase.core.DimensionField;
 import org.pentaho.di.essbase.core.EssbaseHelper;
 import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.repository.ObjectId;
@@ -60,13 +56,12 @@ import org.pentaho.di.trans.step.errorhandling.Stream;
 import org.pentaho.di.trans.step.errorhandling.StreamIcon;
 import org.pentaho.di.trans.step.errorhandling.StreamInterface;
 import org.pentaho.di.trans.step.errorhandling.StreamInterface.StreamType;
-import org.pentaho.di.trans.steps.essbase.dataoutput.EssbaseDataOutputData;
-import org.pentaho.di.trans.steps.olapinput.OlapData;
-import org.pentaho.di.trans.steps.olapinput.OlapHelper;
-import org.pentaho.di.trans.steps.tableinput.TableInputMeta;
 import org.w3c.dom.Node;
 
-import com.healthmarketscience.jackcess.scsu.Debug;
+import java.util.List;
+import java.util.Map;
+
+// import com.healthmarketscience.jackcess.scsu.Debug;
 
 /*
  * Created on 2-jun-2003
@@ -105,7 +100,7 @@ public class EssbaseOlapInputMeta extends BaseStepMeta implements StepMetaInterf
     }
 
     /**
-     * @param variableReplacementActive The variableReplacementActive to set.
+     * @param suppressZeroActive The variableReplacementActive to set.
      */
     public void setSuppressZeroActive(boolean suppressZeroActive)
     {
@@ -496,7 +491,8 @@ public class EssbaseOlapInputMeta extends BaseStepMeta implements StepMetaInterf
 		data.helper.openCubeView("Test", this.getApplication(), this.getCube());
 		data.helper.executeMDX(this.mdx);
 		
-		data.helper.createRectangularOutput(this.suppressZeroActive);
+		// data.helper.createRectangularOutput( this.suppressZeroActive );
+		data.helper.createRectangularOutput( );
 		data.outputRowMeta = this.createRowMeta(data.helper.getHeaders(), data.helper.getRows()).clone(); 
     		
     }
@@ -510,7 +506,7 @@ public class EssbaseOlapInputMeta extends BaseStepMeta implements StepMetaInterf
     }
 
     /**
-     * @param cube the cube name to set
+     * @param app the app name to set
      */
     public void setApplication(String app) {
     	this.app=app;
@@ -533,12 +529,14 @@ public class EssbaseOlapInputMeta extends BaseStepMeta implements StepMetaInterf
      * The generator step only produces output, does not accept input!
      */
     public StepIOMetaInterface getStepIOMeta() {
+			StepIOMetaInterface ioMeta = super.getStepIOMeta( false );
         if (ioMeta==null) {
 
             ioMeta = new StepIOMeta(true, true, false, false, false, false);
         
             StreamInterface stream = new Stream(StreamType.INFO, null, BaseMessages.getString(PKG, "EssbaseOlapInputMeta.InfoStream.Description"), StreamIcon.INFO, null);
             ioMeta.addStream(stream);
+            super.setStepIOMeta( ioMeta );
         }
         
         return ioMeta;
